@@ -33,13 +33,12 @@ export default function Post() {
     };
 
     return post ? (
-        <div className="py-8">
-            <Container>
-                <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
+            <Container className="py-8">
+                <div className="w-full flex justify-center mb-4 relative border border-gray-light rounded-md p-2">
                     <img
                         src={service.getFilePreview(post.featuredImage)}
                         alt={post.title}
-                        className="rounded-xl"
+                        className="rounded-md"
                     />
 
                     {isAuthor && (
@@ -62,6 +61,5 @@ export default function Post() {
                     {parse(post.content)}
                 </div>
             </Container>
-        </div>
     ) : null;
 }

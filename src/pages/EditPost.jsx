@@ -4,7 +4,7 @@ import service from "../appwrite/config"
 import { useNavigate, useParams } from "react-router-dom";
 
 export default function EditPost() {
-    const [post, setPosts] = useState([]);
+    const [post, setPost] = useState(null);
     const { slug } = useParams();
     const navigate = useNavigate();
 
@@ -12,7 +12,7 @@ export default function EditPost() {
         if (slug) {
             service.getPost(slug).then((post) => {
                 if (post) {
-                    setPosts(post)
+                    setPost(post);
                 }
             })
         } else {

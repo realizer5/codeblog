@@ -1,7 +1,6 @@
 import { useDispatch } from 'react-redux';
 import authService from '../../appwrite/auth';
 import { logout } from '../../store/authSlice';
-import { useNavigate } from 'react-router-dom';
 
 export default function LogoutBtn() {
     const dispatch = useDispatch();
@@ -13,7 +12,7 @@ export default function LogoutBtn() {
     }
 
     return (
-        <button type="button" className='inline-block px-6 py-2 duration-200 hover:bg-blue-100 rounded-full'
+        <button type="button" className='font-semibold border border-slate-light inline-block px-4 py-2 duration-200 hover:bg-blue-light rounded-md active:bg-blude-dark'
             onClick={logoutHandler}>
             Log out</button>
     )

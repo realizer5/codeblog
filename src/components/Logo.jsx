@@ -1,8 +1,8 @@
-import React from 'react'
+import { LogoImg } from "../assets";
 
-export default function Logo({ width = "100px" }) {
+export default function Logo({className=""}) {
     return (
-        <div>Logo</div>
+        <img src={LogoImg} alt="Logo" className={`object-center ${className}`} />
     )
 }
 
