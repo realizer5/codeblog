@@ -11,7 +11,7 @@ export default function Header() {
     ]
 
     return (
-        <header className="p-2 sticky top-0 z-10">
+        <header className="py-2 sticky top-0 z-10">
             <Container>
                 <nav className="flex py-2 shadow bg-blue-dark rounded-md items-center px-4">
                     <div className="mr-4">
