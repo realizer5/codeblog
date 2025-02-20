@@ -12,7 +12,7 @@ import { RouterProvider } from 'react-router';
 const router = createBrowserRouter([
     {
         path: "/", element: <App />, children: [
-            { path: "/", element: <Home />, },
+            {  path: "/", element: <Home />, },
             { path: "/login", element: (<Protected authentication={false}> <Login /> </Protected>), },
             { path: "/signup", element: (<Protected authentication={false}> <Signup /> </Protected>), },
             { path: "/all-posts", element: (<Protected authentication> {" "} <AllPosts /> </Protected>), },

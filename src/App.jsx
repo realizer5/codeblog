@@ -22,11 +22,11 @@ function App() {
     return !loading ? (
         <div className="flex flex-wrap min-h-screen content-between bg-blue-light text-white">
             <div className="w-full block">
-            <Header />
-            <main>
-                <Outlet />
-            </main>
-            <Footer />
+                <Header />
+                <main>
+                    <Outlet />
+                </main>
+                <Footer />
             </div>
         </div>
     ) : null
