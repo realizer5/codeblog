@@ -1,4 +1,3 @@
-import React from 'react'
 import { Container, Button, HomeCard, Logo } from '.'
 import { FileCode, ImageUp, FilePenLine, BookText, GlobeLock } from 'lucide-react';
 
@@ -32,7 +31,7 @@ export default function PublicHomepage() {
                     </div>
                     <div className="flex-1 my-auto">
                         <img src="https://images.pexels.com/photos/1049764/pexels-photo-1049764.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="cat-laptop"
-                            className="rounded-xl object-cover shadow w-full" />
+                            className="rounded-xl object-cover shadow w-full" loading='lazy' />
                     </div>
                 </div>
             </div>
@@ -43,7 +42,7 @@ export default function PublicHomepage() {
                 </div>
                 <div className="mt-4 px-1 flex flex-wrap lg:flex-nowrap gap-4 text-gray-light">
                     <img src="https://images.pexels.com/photos/4240505/pexels-photo-4240505.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="girl with laptop"
-                        className="rounded-xl object-cover lg:max-h-100 md:max-h-100 shadow mx-auto" />
+                        className="rounded-xl object-cover lg:max-h-100 md:max-h-100 shadow mx-auto" loading='lazy' />
                     <div>
                         <h3 className="text-2xl sm:text-3xl font-semibold mt-2 lg:mt-10">Create, Share, and Inspire – The Easiest Way to Build and Publish Your Blog in Minutes</h3>
                         <p className="mt-2">Welcome to <strong>Codeblog</strong>, the ultimate platform for creating and sharing your blog in just a few clicks. Whether you're a beginner or an experienced writer, our easy-to-use tools allow you to build a stunning blog in no time. With simple customization options and fast publishing, you can focus on what truly matters—sharing your ideas with the world!</p>

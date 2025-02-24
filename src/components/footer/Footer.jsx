@@ -2,9 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Container, Logo } from '../'
 
-function Footer() {
+function Footer({ className="" }) {
     return (
-        <footer className='w-full bg-blue-dark py-10 px-10'>
+        <footer className={`w-full bg-blue-dark py-10 px-10 ${className}`}>
             <Container className='flex space-x-10 flex-col sm:flex-row'>
                 <div>
                     <Logo className='w-28 mb-4' />
@@ -33,7 +33,7 @@ function Footer() {
                         <ul>
                             <li className='mb-2'><Link to="/" className='text-sm font-medium text-gray-dark hover:text-gray-light'>Support docs</Link></li>
                             <li className='mb-2'><Link to="/" className='text-sm font-medium text-gray-dark hover:text-gray-light'>Contact</Link></li>
-                            <li><Link to="/" className='text-sm font-medium text-gray-dark hover:text-gray-light'>Join discord</Link></li>
+                            <li><a href="https://discord.gg/zHfSuaUEa6" className='text-sm font-medium text-gray-dark hover:text-gray-light'>Join discord</a></li>
                         </ul>
                     </div>
                     <div>

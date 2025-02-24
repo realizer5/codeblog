@@ -13,8 +13,9 @@ import RTE from "./RTE";
 import Select from "./Select";
 import Signup from "./Signup";
 import HomeCard from "./HomeCard";
+import LoadingDots from "./LoadingDots";
 
 export {
     Header, Footer, Container, Logo, LogoutBtn, Button, PostForm, Protected, Input, Login, PostCard, RTE,
-    Select, Signup, HomeCard
+    Select, Signup, HomeCard, LoadingDots
 }

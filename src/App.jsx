@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import authService from "./appwrite/auth";
-import { Header, Footer } from "./components/";
+import { Header, Footer, LoadingDots } from "./components/";
 import { login, logout } from "./store/authSlice"
 import { Outlet } from "react-router-dom";
 
@@ -20,16 +20,16 @@ function App() {
     }, []);
 
     return !loading ? (
-        <div className="flex flex-wrap min-h-screen content-between bg-blue-light text-white">
-            <div className="w-full block">
-                <Header />
-                <main>
-                    <Outlet />
-                </main>
-                <Footer />
-            </div>
+        <div className="flex flex-wrap flex-col min-h-screen bg-blue-light text-gray-light">
+            <Header />
+            <main className="flex-1 grid">
+                <Outlet />
+            </main>
+            <Footer className="mt-auto" />
         </div>
-    ) : null
+    ) : (
+        <LoadingDots className="h-screen bg-blue-light" />
+    );
 }
 
 export default App
