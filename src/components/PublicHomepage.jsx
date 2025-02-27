@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { Container, Button, HomeCard, Logo } from '.'
 import { FileCode, ImageUp, FilePenLine, BookText, GlobeLock } from 'lucide-react';
 
@@ -9,6 +10,7 @@ export default function PublicHomepage() {
         { text: "Write Documentation of Your Code with Ease", icon: <BookText /> },
         { text: "Write your Private blogs that only you can Read", icon: <GlobeLock /> }
     ];
+    const navigate = useNavigate();
     return (
         <Container className="w-full py-8 mt-4">
             <div className="flex lg:flex-row flex-col relative">

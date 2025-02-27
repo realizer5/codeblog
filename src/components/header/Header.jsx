@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { Container, Logo, LogoutBtn } from "../";
+import { Container, Logo, ProfileBtn } from "../";
 import { Link, NavLink } from "react-router-dom";
 import { FilePenLine } from "lucide-react";
 
@@ -30,7 +30,7 @@ export default function Header() {
                                 </NavLink>
                             </li>
                         ) : null)}
-                        {authStatus ? <li><LogoutBtn /></li> : <li><Link to="/login" className="font-semibold border border-slate-light inline-block px-4 py-2 duration-200 hover:bg-blue-light rounded-md active:bg-blue-dark">Login</Link></li>}
+                        {authStatus ? <li ><ProfileBtn /></li> : <li><Link to="/login" className="font-semibold border border-slate-light inline-block px-4 py-2 duration-200 hover:bg-blue-light rounded-md active:bg-blue-dark">Login</Link></li>}
                     </ul>
                 </nav>
             </Container>

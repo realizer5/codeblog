@@ -59,6 +59,14 @@ export class Service {
             return false;
         }
     }
+    async uploadPfp(file, userId) {
+        try {
+            return await this.bucket.createFile(conf.appwriteProfilePicturesId, userId, file);
+        } catch (error) {
+            console.error("appwrite service :: uploadPfp :: error", error);
+            return false;
+        }
+    };
     async deleteFile(fileId) {
         try {
             await this.bucket.deleteFile(conf.appwriteBucketId, fileId);
@@ -70,6 +78,9 @@ export class Service {
     }
     getFilePreview(fileId) {
         return this.bucket.getFilePreview(conf.appwriteBucketId, fileId);
+    }
+    getProfilePreview(fileId) {
+        return this.bucket.getFilePreview(conf.appwriteProfilePicturesId, fileId);
     }
 };
 
