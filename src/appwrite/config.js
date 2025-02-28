@@ -61,7 +61,7 @@ export class Service {
     }
     async uploadPfp(file, userId) {
         try {
-            return await this.bucket.createFile(conf.appwriteProfilePicturesId, userId, file);
+            return await this.bucket.createFile(conf.appwriteProfileBucketId, userId, file);
         } catch (error) {
             console.error("appwrite service :: uploadPfp :: error", error);
             return false;
@@ -76,11 +76,20 @@ export class Service {
             return false;
         }
     }
+    async deletePfp(fileId) {
+        try {
+            await this.bucket.deleteFile(conf.appwriteProfileBucketId, fileId);
+            return true;
+        } catch (error) {
+            console.error("appwrite service :: deletePfp :: error", error);
+            return false;
+        }
+    }
     getFilePreview(fileId) {
         return this.bucket.getFilePreview(conf.appwriteBucketId, fileId);
     }
     getProfilePreview(fileId) {
-        return this.bucket.getFilePreview(conf.appwriteProfilePicturesId, fileId);
+        return this.bucket.getFilePreview(conf.appwriteProfileBucketId, fileId);
     }
 };
 

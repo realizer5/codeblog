@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import service from "../appwrite/config";
-import { Button, Container } from "../components";
+import { Button, Container, LoadingDots } from "../components";
 import parse from "html-react-parser";
 import { useSelector } from "react-redux";
 import { Pencil, Trash2 } from "lucide-react";
 
 export default function Post() {
     const [post, setPost] = useState(null);
+    const [loading, setLoading] = useState(true);
     const { slug } = useParams();
     const navigate = useNavigate();
 
@@ -20,7 +21,7 @@ export default function Post() {
             service.getPost(slug).then((post) => {
                 if (post) setPost(post);
                 else navigate("/");
-            });
+            }).finally(() => { setLoading(false) });
         } else navigate("/");
     }, [slug, navigate]);
 
@@ -32,35 +33,38 @@ export default function Post() {
             }
         });
     };
+    if (!loading) {
+        return post ? (
+            <Container className="py-8">
+                <div className="w-full flex justify-center mb-4 relative border border-gray-light rounded-md p-2">
+                    <img
+                        src={service.getFilePreview(post.featuredImage)}
+                        alt={post.title}
+                        className="rounded-md"
+                    />
 
-    return post ? (
-        <Container className="py-8">
-            <div className="w-full flex justify-center mb-4 relative border border-gray-light rounded-md p-2">
-                <img
-                    src={service.getFilePreview(post.featuredImage)}
-                    alt={post.title}
-                    className="rounded-md"
-                />
-
-                {isAuthor && (
-                    <div className="absolute right-6 top-6">
-                        <Link to={`/edit-post/${post.$id}`}>
-                            <Button className="mr-3">
-                                <Pencil />
+                    {isAuthor && (
+                        <div className="absolute right-6 top-6">
+                            <Link to={`/edit-post/${post.$id}`}>
+                                <Button className="mr-3">
+                                    <Pencil />
+                                </Button>
+                            </Link>
+                            <Button onClick={deletePost}>
+                                <Trash2 />
                             </Button>
-                        </Link>
-                        <Button onClick={deletePost}>
-                            <Trash2 />
-                        </Button>
-                    </div>
-                )}
-            </div>
-            <div className="w-full mb-6">
-                <h1 className="text-2xl font-bold">{post.title}</h1>
-            </div>
-            <div className="browser-css">
-                {parse(post.content)}
-            </div>
-        </Container>
-    ) : null;
+                        </div>
+                    )}
+                </div>
+                <div className="w-full mb-6">
+                    <h1 className="text-2xl font-bold">{post.title}</h1>
+                </div>
+                <div className="browser-css">
+                    {parse(post.content)}
+                </div>
+            </Container>
+        ) : null;
+    } else {
+        return (<LoadingDots />)
+    };
 }
