@@ -13,6 +13,7 @@ const Profile = () => {
         await service.deletePfp(userData.$id);
         await service.uploadPfp(data.image[0], userData.$id);
         console.log("done");
+        console.log(data.image[0]);
     };
     return (
         <Container className="my-10">
@@ -29,9 +30,12 @@ const Profile = () => {
                     }
                     <img src={service.getProfilePreview(userData.$id)} alt="profile picture" className="rounded-lg w-70" />
                 </div>
-                <Button type={editable ? "submit" : "button"} className="w-fit mt-4 col-span-2 justify-self-center"
+                <Button type="button" className={`w-fit mt-4 col-span-2 justify-self-center ${editable && "hidden"}`}
                     onClick={() => setEditable(true)}>
-                    {editable ? "Update Profile" : "Edit Profile"}
+                    Edit Profile
+                </Button>
+                <Button type="submit" className={`w-fit mt-4 col-span-2 justify-self-center ${!editable && "hidden"}`}>
+                    Update Profile
                 </Button>
             </form>
         </Container >

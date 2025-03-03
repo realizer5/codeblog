@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { login as authLogin } from "../store/authSlice";
 import { Button, Input, Logo } from ".";
 import authService from "../appwrite/auth";
@@ -7,7 +7,6 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 
 const Login = () => {
-    const navigate = useNavigate();
     const dispatch = useDispatch();
     const { register, handleSubmit } = useForm();
     const [error, setError] = useState("");
@@ -19,7 +18,7 @@ const Login = () => {
                 const userData = await authService.getCurrentUser();
                 if (userData) dispatch(authLogin(userData));
             }
-            navigate("/");
+            window.location.reload();
         } catch (error) {
             setError(error.message);
         }
