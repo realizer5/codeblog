@@ -12,7 +12,7 @@ export default function Header() {
     ]
 
     return (
-        <header className="py-2 sticky top-0 z-10">
+        <header className="py-2 px-2 sticky top-0 z-10">
             <Container className="bg-blue-dark shadow-md shadow-blue-dark rounded-md">
                 <nav className="flex py-2 items-center px-4">
                     <div className="mr-4">

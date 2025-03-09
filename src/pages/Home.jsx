@@ -29,7 +29,7 @@ export default function Home() {
                 ))}
             </Container>
         )
-    } else if (loading) {
+    } else if (loading){
         return (<LoadingDots />)
     }
 }
