@@ -21,15 +21,15 @@ export default function Home() {
         )
     } else if (posts.length > 0) {
         return (
-            <Container className="py-8 flex flex-wrap self-stretch">
+            <Container className="py-8 self-stretch grid grid-cols-[repeat(auto-fit,minmax(400px,1fr))] auto-rows-[200px] gap-4 overflow-x-hidden items-center">
                 {posts.map((post) => (
-                    <div key={post.$id} className='p-2 w-1/4'>
+                    <div key={post.$id} className="h-full overflow-hidden">
                         <PostCard {...post} />
                     </div>
                 ))}
             </Container>
         )
-    } else if (loading){
+    } else if (loading) {
         return (<LoadingDots />)
     }
 }
