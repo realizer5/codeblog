@@ -1,6 +1,6 @@
-import { forwardRef, useId } from "react"
+import { useId } from "react"
 
-const Input = ({ label, type = "text", className = "", ...props }, ref) => { // didn't added props to input and it was causing error without any description or hind and form was not submiting cuz i was adding in props when calling this annoying error
+const Input = ({ label, type = "text", className = "", ref, ...props }) => { // didn't added props to input and it was causing error without any description or hind and form was not submiting cuz i was adding in props when calling this annoying error
     const id = useId();
 
     return (
@@ -12,4 +12,4 @@ const Input = ({ label, type = "text", className = "", ...props }, ref) => { // 
     )
 }
 
-export default forwardRef(Input);
+export default Input;

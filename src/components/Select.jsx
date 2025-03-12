@@ -1,6 +1,6 @@
-import { forwardRef, useId } from "react"
+import { useId } from "react"
 
-const Select = ({ options = [], label, className = "", ...props }, ref) => {
+const Select = ({ options = [], label, className = "", ref, ...props }) => {
     const id = useId();
     return (
         <div className="w-full">
@@ -15,4 +15,4 @@ const Select = ({ options = [], label, className = "", ...props }, ref) => {
     )
 }
 
-export default forwardRef(Select); // forwardRef is deprecated in react 19 and uses only ref as parameter
+export default Select; // forwardRef is deprecated in react 19 and uses only ref as parameter
