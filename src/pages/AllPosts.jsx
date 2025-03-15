@@ -13,16 +13,16 @@ export default function AllPosts() {
 
     if (!loading) {
         return (
-            <div className="w-full py-8">
-                <Container>
-                    <div className="self-stretch grid gap-4 grid-cols-1 md:grid-cols-2">
-                        {posts.map((post) => (
+            <Container>
+                <div className="py-8 self-stretch grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3" >
+                    {
+                        posts.map((post) => (
                             <div key={post.$id} >
                                 <PostCard {...post} />
-                            </div>))}
-                    </div>
-                </Container>
-            </div>
+                            </div>))
+                    }
+                </div>
+            </Container >
         )
     } else if (loading) {
         return (<LoadingDots className="min-h-screen" />)

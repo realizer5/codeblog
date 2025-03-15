@@ -21,15 +21,17 @@ export default function Home() {
         )
     } else if (posts.length > 0) {
         return (
-            <Container className="py-8 self-stretch grid gap-4 grid-cols-1 md:grid-cols-2">
-                {posts.map((post) => (
-                    <div key={post.$id}>
-                        <PostCard {...post} />
-                    </div>
-                ))}
+            <Container>
+                <div className="py-8 self-stretch grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                    {posts.map((post) => (
+                        <div key={post.$id}>
+                            <PostCard {...post} />
+                        </div>
+                    ))}
+                </div>
             </Container>
         )
     } else if (loading) {
-        return (<LoadingDots className="min-h-screen"/>)
+        return (<LoadingDots className="min-h-screen" />)
     }
 }

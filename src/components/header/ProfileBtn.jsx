@@ -4,6 +4,7 @@ import { logout } from '../../store/authSlice';
 import service from "../../appwrite/config";
 import authService from "../../appwrite/auth";
 import { NavLink, Link } from "react-router-dom";
+import { dummyUser } from "../../assets";
 
 export default function ProfileBtn() {
     const [showOption, setShowOption] = useState(false);
@@ -47,7 +48,10 @@ export default function ProfileBtn() {
         <div className="relative">
             <button onClick={() => setShowOption(!showOption)} ref={profileButtonRef}
                 className={`rounded-full border-2 ${showOption ? "border-gray-light" : "border-gray-dark"} p-1 duration-200 cursor-pointer aspect-square w-10 `}>
-                <img src={userData && service.getProfilePreview(userData.$id)} alt="profile picture" className="rounded-full" />
+                <div className="relative">
+                    <img src={userData && service.getProfilePreview(userData.$id)} className="absolute rounded-full" />
+                    <img src={dummyUser} alt="profile picture" className="rounded-full" />
+                </div>
             </button >
             {showOption &&
                 <ul ref={popoverRef} className="mt-3 bg-blue-dark absolute right-0 text-center p-4 rounded-lg text-nowrap shadow-md shadow-blue-dark ">

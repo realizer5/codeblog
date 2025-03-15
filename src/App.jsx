@@ -25,7 +25,7 @@ function App() {
             <main className="flex-1 grid">
                 <Outlet />
             </main>
-            <Footer className="mt-auto" />
+            <Footer/>
         </div>
     ) : (
         <LoadingDots className="h-screen bg-blue-light" />
