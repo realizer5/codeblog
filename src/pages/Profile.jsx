@@ -5,17 +5,31 @@ import { useSelector } from "react-redux";
 import { Pencil } from "lucide-react";
 import { useState, useEffect } from "react";
 import { dummyUser } from "../assets";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
     const [editable, setEditable] = useState(false);
+    const [pfp, setPfp] = useState(false);
     const userData = useSelector((state) => state.auth.userData);
+    const navigate = useNavigate();
     const { register, handleSubmit } = useForm({ defaultValues: { name: userData.name, email: userData.email } });
     const submit = async (data) => {
-        await service.deletePfp(userData.$id);
-        await service.uploadPfp(data.image[0], userData.$id);
+        if (data.image[0]) {
+            await service.deletePfp(userData.$id);
+            await service.uploadPfp(data.image[0], userData.$id);
+        }
         console.log("done");
-        console.log(data.image[0]);
+        navigate("/");
     };
+    useEffect(() => {
+        service.checkPfp(userData.$id).then((data) => {
+            setPfp(true)
+        }
+        ).catch((err) => {
+            setPfp(false);
+        }
+        )
+    }, [setPfp])
     return (
         <Container className="my-10">
             <h1 className="text-center text-4xl font-semibold text-gray-light">Profile</h1>
@@ -30,8 +44,7 @@ const Profile = () => {
                             <Pencil className="absolute group-hover:opacity-100 opacity-0 duration-200 z-20" />
                         </>
                     }
-                    <img src={dummyUser} alt="profile picture" className="rounded-lg w-70" />
-                    <img src={service.getProfilePreview(userData.$id)} className="rounded-lg w-70 z-10 absolute" />
+                    <img src={pfp ? service.getProfilePreview(userData.$id) : dummyUser} className="rounded-lg w-70 z-10" />
                 </div>
                 <Button type="button" className={`w-fit col-span-2 justify-self-center ${editable && "hidden"}`}
                     onClick={() => setEditable(true)}>

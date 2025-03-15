@@ -8,9 +8,9 @@ export class AuthService {
         this.client.setEndpoint(conf.appwriteUrl).setProject(conf.appwriteProjectId);
         this.account = new Account(this.client);
     }
-    async createAccount({ email, password, username }) {
+    async createAccount({ email, password, name }) {
         try {
-            const userAccount = await this.account.create(ID.unique(), email, password, username);
+            const userAccount = await this.account.create(ID.unique(), email, password, name);
             if (userAccount) {
                 // call antoher method
                 return this.login({ email, password });

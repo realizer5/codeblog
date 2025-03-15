@@ -8,6 +8,7 @@ import { dummyUser } from "../../assets";
 
 export default function ProfileBtn() {
     const [showOption, setShowOption] = useState(false);
+    const [pfp, setPfp] = useState(false);
     const userData = useSelector(state => state.auth.userData);
     const dispatch = useDispatch();
     const logoutHandler = () => {
@@ -39,6 +40,8 @@ export default function ProfileBtn() {
             document.body.removeEventListener("click", handleClickOutside);
         }
 
+        service.checkPfp(userData.$id).then(data => { setPfp(true) }).catch(err => { setPfp(false) })
+
         return () => {
             document.body.removeEventListener("click", handleClickOutside);
         };
@@ -48,10 +51,7 @@ export default function ProfileBtn() {
         <div className="relative">
             <button onClick={() => setShowOption(!showOption)} ref={profileButtonRef}
                 className={`rounded-full border-2 ${showOption ? "border-gray-light" : "border-gray-dark"} p-1 duration-200 cursor-pointer aspect-square w-10 `}>
-                <div className="relative">
-                    <img src={userData && service.getProfilePreview(userData.$id)} className="absolute rounded-full" />
-                    <img src={dummyUser} alt="profile picture" className="rounded-full" />
-                </div>
+                <img src={pfp ? service.getProfilePreview(userData.$id) : dummyUser} className="rounded-full" />
             </button >
             {showOption &&
                 <ul ref={popoverRef} className="mt-3 bg-blue-dark absolute right-0 text-center p-4 rounded-lg text-nowrap shadow-md shadow-blue-dark ">

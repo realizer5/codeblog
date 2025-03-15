@@ -89,7 +89,14 @@ export class Service {
         return this.bucket.getFilePreview(conf.appwriteBucketId, fileId);
     }
     getProfilePreview(fileId) {
-        return this.bucket.getFilePreview(conf.appwriteProfileBucketId, fileId);
+        return this.bucket.getFileView(conf.appwriteProfileBucketId, fileId);
+    }
+    async checkPfp(fileId) {
+        try {
+            return this.bucket.getFile(conf.appwriteProfileBucketId, fileId);
+        } catch (err) {
+            console.error("appwrite service :: checkPfp :: error", err);
+        }
     }
 };
 
