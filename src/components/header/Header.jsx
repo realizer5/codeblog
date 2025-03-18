@@ -31,13 +31,16 @@ export default function Header() {
                         ) : null)}
                     </ul>
                     <ul className="ml-auto md:ml-0 flex items-center space-x-2">
-                        <li className="flex items-center">
-                            <NavLink className={({ isActive }) => `${isActive ? "text-blue-400" : "text-gray-light"} font-semibold inline-block px-4 py-2 duration-200 hover:bg-blue-light rounded-md active:bg-blue-dark`}
-                                to={"/add-post"} >
-                                <FilePenLine />
-                            </NavLink>
-                        </li>
-                        {authStatus ? <li ><ProfileBtn /></li> : <li><Link to="/login" className="font-semibold border border-slate-light inline-block px-4 py-2 duration-200 hover:bg-blue-light rounded-md active:bg-blue-dark">Login</Link></li>}
+                        {authStatus ? (
+                            <>
+                                <li className="flex items-center">
+                                    <NavLink className={({ isActive }) => `${isActive ? "text-blue-400" : "text-gray-light"} font-semibold inline-block px-4 py-2 duration-200 hover:bg-blue-light rounded-md active:bg-blue-dark`}
+                                        to={"/add-post"} >
+                                        <FilePenLine />
+                                    </NavLink>
+                                </li>
+                                <li ><ProfileBtn /></li>
+                            </>) : <li><Link to="/login" className="font-semibold border border-slate-light inline-block px-4 py-2 duration-200 hover:bg-blue-light rounded-md active:bg-blue-dark">Login</Link></li>}
                     </ul>
                 </nav>
             </Container>
