@@ -89,7 +89,7 @@ export class Service {
         return this.bucket.getFilePreview(conf.appwriteBucketId, fileId);
     }
     getProfilePreview(fileId) {
-        return this.bucket.getFileView(conf.appwriteProfileBucketId, fileId);
+        return this.bucket.getFilePreview(conf.appwriteProfileBucketId, fileId);
     }
     async checkPfp(fileId) {
         try {
