@@ -1,15 +1,16 @@
-import { useCallback, useEffect } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import service from "../../appwrite/config";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
 import { Button, Input, Select, RTE } from "../";
 
 export default function PostForm({ post }) {
+    const [image, setImage] = useState(null);
     const { register, handleSubmit, watch, setValue, control, getValues } = useForm({
         defaultValues: {
             title: post?.title || "", slug: post?.slug || "", content: post?.content || "",
-            status: post?.status || true
+            status: post?.status || "active"
         }
     });
 
@@ -54,6 +55,18 @@ export default function PostForm({ post }) {
         }
     }, [watch, slugTransform, setValue]);
 
+    useEffect(() => {
+        const subscription = watch((value, { name }) => {
+            if (name === "image" && value.image) {
+                const image = URL.createObjectURL(value.image[0]);
+                setImage(image);
+            }
+        });
+        return () => {
+            subscription.unsubscribe();
+        }
+    }, [watch, setImage]);
+
     return (
         <form onSubmit={handleSubmit(submit)} className="justify-center flex flex-wrap">
             <div className="md:w-2/3 px-2">
@@ -82,11 +95,11 @@ export default function PostForm({ post }) {
                     accept="image/png, image/jpg, image/jpeg, image/gif"
                     {...register("image", { required: !post })}
                 />
-                {post && (
+                {(post || image) && (
                     <div className="w-full mb-4">
                         <img
-                            src={service.getFilePreview(post.featuredImage)}
-                            alt={post.title}
+                            src={!image ? service.getFilePreview(post.featuredImage) : image}
+                            alt={post?.title}
                             className="rounded-lg"
                         />
                     </div>

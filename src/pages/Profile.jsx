@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Pencil, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { dummyUser } from "../assets";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import authService from "../appwrite/auth";
 import { login, logout } from "../store/authSlice"
 

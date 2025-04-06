@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../store/authSlice';
 import service from "../../appwrite/config";
 import authService from "../../appwrite/auth";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link } from "react-router";
 import { dummyUser } from "../../assets";
 
 export default function ProfileBtn() {

@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import { Container, Button, HomeCard, Logo } from '.'
 import { FileCode, ImageUp, FilePenLine, BookText, GlobeLock } from 'lucide-react';
 

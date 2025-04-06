@@ -1,5 +1,5 @@
 import service from "../appwrite/config"
-import { Link } from "react-router-dom"
+import { Link } from "react-router"
 import parse from "html-react-parser"
 
 //$id cuz of appwrite uses $ for this

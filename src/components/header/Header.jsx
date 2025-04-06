@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { Container, Logo, ProfileBtn } from "../";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router";
 import { FilePenLine } from "lucide-react";
 
 export default function Header() {
