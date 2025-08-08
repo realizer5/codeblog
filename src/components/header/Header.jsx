@@ -7,7 +7,6 @@ export default function Header() {
     const authStatus = useSelector((state) => state.auth.status);
     const navItems = [
         { name: 'Home', slug: "/", active: authStatus },
-        { name: "All Posts", slug: "/all-posts", active: authStatus, },
     ]
 
     return (

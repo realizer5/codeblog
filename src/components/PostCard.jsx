@@ -4,6 +4,7 @@ import parse from "html-react-parser"
 
 //$id cuz of appwrite uses $ for this
 const PostCard = ({ $id, title, featuredImage, content }) => {
+    console.log(typeof content)
     return (
         <Link to={`/post/${$id}`} >
             <div className="flex gap-2 bg-blue-dark shadow-md shadow-blue-dark rounded-md p-2">
